@@ -7,6 +7,7 @@
 #include <string>
 #include <map>
 #include <deque>
+#include <set>
 
 void ShowVector(vector<int> v)
 {
@@ -200,6 +201,48 @@ void DequeDemo()
     cout << '\n';
 
     // wiêcej informacji http://www.cplusplus.com/reference/deque/deque/
+
+    // analogicznie multiset pozwala na dodawanie wielu kluczy
+}
+
+void SetDemo()
+{
+    // Cechy kontenera
+    // - Associative
+    //   Elements in associative containers are referenced by their key and not by their absolute position in the container.
+    // - Ordered
+    //    The elements in the container follow a strict order at all times.All inserted elements are given a position in this order.
+    // - Set
+    //    The value of an element is also the key used to identify it.
+    // - Unique keys
+    //    No two elements in the container can have equivalent keys.
+    // - Allocator - aware
+    //    The container uses an allocator object to dynamically handle its storage needs.
+    set<int> first;                           // empty set of ints
+
+    int myints[] = { 10,20,30,40,50,50 };
+    int size = sizeof(myints) / sizeof(int);
+    set<int> second(myints, myints + size);        // range
+
+    set<int> third(second);                  // a copy of second
+
+    set<int> fourth(second.begin(), second.end());  // iterator ctor.
+
+    cout << "Elementy zbioru: " << endl;
+    for (auto item : second)
+    {
+        cout << item << endl;
+    }
+    // nie mo¿na dodawaæ duplikatów
+
+    second.erase(second.find(20), second.find(40));
+    cout << "Elementy zbioru po skasowaniu: " << endl;
+    for (auto item : second)
+    {
+        cout << item << endl;
+    }
+
+    // wiecej informacji http://www.cplusplus.com/reference/set/set/
 }
 
 int main()
@@ -207,9 +250,9 @@ int main()
     //VectorsDemo();
     //ListsDemo();
     //MapsDemo();
-    DequeDemo();
-    // 6. Set
-    // 7. Multiset
+    //DequeDemo();
+    SetDemo();
+
     // 8. Stack
     // 9. Queue
 
