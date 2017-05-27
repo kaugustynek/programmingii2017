@@ -6,6 +6,7 @@
 #include <list>
 #include <string>
 #include <map>
+#include <deque>
 
 void ShowVector(vector<int> v)
 {
@@ -174,14 +175,39 @@ void MapsDemo()
     // wiêcej informacji http://www.cplusplus.com/reference/map/map/
 }
 
+void DequeDemo()
+{
+    // Podwójnie zakoñczona kolejka
+    // There are very similar to vector, but
+    // vectors use a single array that needs to be occasionally reallocated for growth, 
+    // the elements of a deque can be scattered in different chunks of storage, 
+    // with the container keeping the necessary information internally to provide direct access 
+    // to any of its elements
+    // constructors used in the same order as described above:
+    deque<int> first;                                // empty deque of ints
+    deque<int> second(4, 100);                       // four ints with value 100
+    deque<int> third(second.begin(), second.end());  // iterating through second
+    deque<int> fourth(third);                       // a copy of third
+
+                                                    // the iterator constructor can be used to copy arrays:
+    int myints[] = { 16,2,77,29 };
+    deque<int> fifth(myints, myints + sizeof(myints) / sizeof(int));
+
+    cout << "The contents of fifth are:";
+    for (deque<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
+        cout << ' ' << *it;
+
+    cout << '\n';
+
+    // wiêcej informacji http://www.cplusplus.com/reference/deque/deque/
+}
+
 int main()
 {
     //VectorsDemo();
     //ListsDemo();
-    MapsDemo();
-
-    // 4. Multimap
-    // 5. Deque
+    //MapsDemo();
+    DequeDemo();
     // 6. Set
     // 7. Multiset
     // 8. Stack
