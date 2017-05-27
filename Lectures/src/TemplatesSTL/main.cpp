@@ -4,6 +4,8 @@
 #include "stdafx.h"
 #include <vector>
 #include <list>
+#include <string>
+#include <map>
 
 void ShowVector(vector<int> v)
 {
@@ -116,15 +118,68 @@ void ListsDemo()
     // other examples see http://www.cplusplus.com/reference/list/list/?kw=list
 }
 
+void MapsDemo()
+{
+    // lub te¿ inaczej tablica asocjacyjna lub s³ownik
+
+    map<string, int> first;
+
+    first["dog"] = 10;
+    first["cat"] = 20;
+    first["snake"] = 50;
+    first["giraffe"] = 70;
+
+    map<string, int> second(first.begin(), first.end());
+    map<string, int> third(second);
+
+    third["duck"] = 30;
+
+    cout << third["giraffe"] << endl;
+
+    for each (auto item in third)
+    {
+        cout << item.first << ": " << item.second << endl;
+    }
+
+    cout << "Sprawdzamy czy element o danym kluczu istnieje " << endl;
+
+    string keys[] = { "cat", "dog", "snake", "bird" };
+    for (auto key : keys)
+    {
+        cout << "-----------" << endl;
+        cout << "\t" << key << ": " << first.count(key) << endl;
+
+        if (first.count(key) > 0)
+        {
+            cout << "\t" << "value = " << first.find(key)->second << endl;
+        }
+    }
+
+    multimap<string, int> multi(first.begin(), first.end());
+
+    // mozna dodaæ wiele elementów o tym samym kluczu
+    multi.insert(pair<string, int>("dog", 25));
+
+    for (auto key : keys)
+    {
+        cout << "-----------" << endl;
+        cout << "\t" << key << ": " << multi.count(key) << endl;
+
+        if (multi.count(key) > 0)
+        {
+            cout << "\t" << "value = " << multi.find(key)->second << endl;
+        }
+    }
+
+    // wiêcej informacji http://www.cplusplus.com/reference/map/map/
+}
+
 int main()
 {
-    // 1. Vector
     //VectorsDemo();
-    
-    // 2. List
-    ListsDemo();
+    //ListsDemo();
+    MapsDemo();
 
-    // 3. Map
     // 4. Multimap
     // 5. Deque
     // 6. Set
