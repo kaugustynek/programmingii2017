@@ -146,6 +146,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Figura.h" />
+    <ClInclude Include="Kolo.h" />
+    <ClInclude Include="Prostokat.h" />
+    <ClInclude Include="Punkt.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Figura.cpp" />
+    <ClCompile Include="Kolo.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Prostokat.cpp" />
+    <ClCompile Include="Punkt.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
